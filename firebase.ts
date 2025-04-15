@@ -1,1 +1,0 @@
-// Firebase konfiguráció placeholder

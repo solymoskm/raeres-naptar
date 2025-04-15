@@ -1,0 +1,1 @@
+// Tailwind beállítás placeholder

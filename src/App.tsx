@@ -1,3 +1,4 @@
+// App.tsx – fő komponens módosítva autentikáció kezelésére
 import { useState } from 'react';
 import { useAuth, AuthProvider } from './AuthProvider';
 import { Login } from './Login';
@@ -7,7 +8,7 @@ const AppContent = () => {
   const { user, logout } = useAuth();
   const [showSignup, setShowSignup] = useState(false);
 
-  console.log("Aktuális felhasználó:", user)
+  console.log("Aktuális felhasználó:", user);
 
   if (!user) {
     return (

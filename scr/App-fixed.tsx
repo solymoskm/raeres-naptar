@@ -1,0 +1,46 @@
+// App.tsx – hibakezeléssel bővítve
+import { useState } from 'react';
+import { useAuth, AuthProvider } from './AuthProvider';
+import { Login } from './Login';
+import { Signup } from './Signup';
+
+const AppContent = () => {
+  const { user, logout } = useAuth();
+  const [showSignup, setShowSignup] = useState(false);
+
+  console.log("Aktuális felhasználó:", user);
+
+  // Ha a user még töltődik
+  if (user === undefined) {
+    return <div>Betöltés...</div>;
+  }
+
+  // Ha nincs bejelentkezve senki
+  if (!user) {
+    return (
+      <div>
+        {showSignup ? <Signup /> : <Login />}
+        <button onClick={() => setShowSignup(!showSignup)}>
+          {showSignup ? 'Már van fiókod? Bejelentkezés' : 'Nincs fiókod? Regisztráció'}
+        </button>
+      </div>
+    );
+  }
+
+  // Ha van bejelentkezett felhasználó
+  return (
+    <div>
+      <h1>Ráérés naptár működik! ✅</h1>
+      <p>Bejelentkezve: {user.email || 'ismeretlen email'}</p>
+      <button onClick={logout}>Kijelentkezés</button>
+    </div>
+  );
+};
+
+const App = () => (
+  <AuthProvider>
+    <AppContent />
+  </AuthProvider>
+);
+
+export default App;

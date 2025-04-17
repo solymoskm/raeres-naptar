@@ -7,6 +7,8 @@ const AppContent = () => {
   const { user, logout } = useAuth();
   const [showSignup, setShowSignup] = useState(false);
 
+  console.log("Aktuális felhasználó:", user)
+
   if (!user) {
     return (
       <div>

@@ -28,7 +28,7 @@ const AppContent = () => {
   );
 };
 
-const App = () => (
+const [showSignup, setShowSignup] = useState(false)
   <AuthProvider>
     <AppContent />
   </AuthProvider>
